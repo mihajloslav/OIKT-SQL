@@ -149,7 +149,7 @@ SELECT Did, Ename, Sal FROM Emp ORDER BY Did DESC, Ename ASC;
 
 /*b) Napisati SQL komandu kojom se prikazuju svi podaci o zaposlenima čije se ime završava slovom ‘n’ i koji 
 imaju platu veću ili jednaku 2500 $.*/
-SELECT * FROM Emp E, Dept D WHERE E.Did=D.Did AND Ename Like '%n' AND Sal >= 2500;
+SELECT * FROM Emp WHERE Ename Like '%n' AND Sal >= 2500;
 
 /*2. Pretpostaviti da je data tabela Zaposleni koja ima kolonu Prezime (tipa char (25)). Napisati SQL komandu 
 kojom se prikazuju svi podaci o zaposlenima čije je prezime alfabetski između (i uključujući) prezimena 
@@ -224,7 +224,7 @@ SELECT Eid, Ename, Sal FROM Emp WHERE Ename NOT Like 'R%' ORDER BY Ename DESC;
 
 /*b) Napisati SQL komandu kojom se prikazuju svi podaci o zaposlenima čija plata nije u opsegu (1000 $, 1500 
 $). */
-SELECT * FROM Emp E, Dept D WHERE E.Did=D.Did AND Sal NOT BETWEEN 1000 AND 1500;
+SELECT * FROM Emp WHERE Sal NOT BETWEEN 1000 AND 1500;
 
 /*6. Pretpostaviti da je data tabela Proizvodi koja pored ostalih kolona ima i kolone Cena (tipa integer) i 
 Kategorija (tipa integer). Napisati SQL komandu koristeći operator BETWEEN kojom se prikazuju svi podaci o 
@@ -295,7 +295,7 @@ SELECT Did, Ename, Sal FROM Emp ORDER BY Did ASC, Ename DESC;
 
 /*b) Napisati SQL komandu kojom se prikazuju svi podaci o zaposlenima čije se ime završava slovom ‘p’ i koji 
 imaju platu veću ili jednaku 2000 $.*/
-SELECT * FROM Emp E, Dept D WHERE E.Did=D.Did AND Ename Like '%p' AND Sal >= 2000;
+SELECT * FROM Emp WHERE Ename Like '%p' AND Sal >= 2000;
 
 /*8. Pretpostaviti da je data tabela Zaposleni koja ima kolonu Prezime (tipa char(25)). Napisati SQL komandu 
 kojom se prikazuju svi podaci o zaposlenima čije je prezime alfabetski između (i uključujući) prezimena “Arsic” 
