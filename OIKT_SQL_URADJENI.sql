@@ -1,5 +1,7 @@
 /*URAĐENI SQL ZADACI SA TABELAMA ZA TESTIRANJE By @mihajloslav
 Urađeni rokovi:
+- Februar 2022. (nisam siguran) (nzm koja grupa)
+- Jun 2022. (II Grupa)
 - II kolokvijum 2018. (I, II, III i IV Grupa)
 - Januar 2018. (I i II Grupa)
 - Jun 2017. (I i II Grupa)
@@ -7,14 +9,96 @@ Urađeni rokovi:
 - Oktobar 2017. (I i II Grupa)*/
 
 /*--------------------------------------------------------------------------------------*/
-/*-----------------------FEBRUARSKI ISPITNI ROK 2022.-----------------------------------*/
+/*----------FEBRUARSKI ISPITNI ROK 2022.(nisam siguran)---------------------------------*/
 /*--------------------------------------------------------------------------------------*/
 /*Nzm koja grupa*/
 /*11. Neka je data tabela: Student(sid: integer, name: char(20), surname: char(20), country: char(30),
 hobby: char(20), graduation_year: integer), gde je primarni ključ sid.*/
 
+CREATE TABLE Student(
+	Sid INT PRIMARY KEY,
+  	Name CHAR(20),
+  	Surname CHAR(20),
+  	Country CHAR(30),
+  	Hobby CHAR(20),
+  	Graduation_year INT
+);
+INSERT INTO Student
+VALUES(1, 'Zoran', 'Pavlović', 'Republika Srbija', 'Košarka', 2021),
+(2, 'Miloš', 'Petrović', 'Španija', 'Odbojka', 2021),
+(3, 'Filip', 'Marković', 'Francuska', 'Rukomet', 2020),
+(4, 'Milan', 'Jovanović', 'Republika Srbija', 'Košarka', 2021),
+(5, 'Ana', 'Milovanović', 'Republika Srbija', 'Košarka', 2021),
+(6, 'Nada', 'Stošić', 'Slovenija', 'Fudbal', 2019),
+(7, 'Milena', 'Perić', 'Republika Srbija', 'Vaterpolo', 2020);
+
+SELECT * FROM Student;
+/*a) Napisati SQL koandu kojom se prikazuje broj studenata koji nisu iz Francuske po državama iz kojih ima
+manje od 6 studenata. Komandu napisati takok da ne zavisi od trenutnog sadržaja tabele Student.*/
+SELECT Country, COUNT(*) FROM Student WHERE Country != 'Francuska' GROUP BY Country HAVING COUNT(*) < 6;
+SELECT Country, COUNT(*) FROM Student WHERE Country NOT IN('Francuska') GROUP BY Country HAVING COUNT(*) < 6;
+
+/*pošto piše da ne zavisi od tabele onda ide ovako*/
+SELECT Država, COUNT(*) FROM Student WHERE Država != 'Francuska' GROUP BY Država HAVING COUNT(*) < 6;
+SELECT Država, COUNT(*) FROM Student WHERE Država NOT IN('Francuska') GROUP BY Država HAVING COUNT(*) < 6;
+
+/*b) Napisati SQL komandu kojom se prikazuju svi podaci o studentima koji su diplomirali 2021-e godine ili
+ranije (Graduation_year) sortirano po prezimenu (Surname) u opadajućem redosledu.*/
+SELECT * FROM Student Where graduation_year <= 2021 ORDER BY Surname DESC;
+
 /*--------------------------------------------------------------------------------------*/
-/*--------------------------------II Kolokvijum 2018.-----------------------------------*/
+/*----------------------JUNSKI ISPITNI ROK 25.06.2022-----------------------------------*/
+/*--------------------------------------------------------------------------------------*/
+
+/*---------------------------II Grupa---------------------------------*/
+/*11. Neka su date sledeće dve tabele: Emp(eid: integer, did: integer, sal: integer, hobby: 
+char(20)) i Dept(did: integer, dname: char(20), floor: integer, budget: real), gde su primarni 
+ključevi eid u tabeli Emp i did u tabeli Dept.*/
+CREATE TABLE Emp(
+ 	Eid INT PRIMARY KEY,
+  	Did INT,
+  	Sal INT,
+  	Hobby CHAR(20)
+);
+
+CREATE TABLE Dept(
+ 	Did INT PRIMARY KEY,
+  	Dname CHAR(20),
+  	Floor INT,
+  	Budget REAL
+);
+
+INSERT INTO Emp
+VALUES (1, 10, 1000, 'Košarka'),
+(2, 20, 3000, 'Odbojka'),
+(3, 30, 3500, 'Rukomet'),
+(4, 30, 5000, 'Košarka'),
+(5, 40, 2500, 'Košarka'),
+(6, 40, 2500, 'Fudbal'),
+(7, 50, 3500, 'Vaterpolo');
+
+INSERT INTO Dept
+VALUES (10, 'Dept1', 1, 50000),
+(20, 'Dept2', 2, 60000),
+(30, 'Dept3', 3, 100000),
+(40, 'Dept4', 4, 80000),
+(50, 'Dept5', 5, 40000);
+
+SELECT * FROM Emp;
+SELECT * FROM Dept;
+
+/*Napisati šta će biti rezultat sledećeg SQL upita:
+SELECT 2*MIN(E.Sal), MAX(E.Sal), 2*MAX(E.Sal)-MIN(E.Sal)+23, AVG(E.Sal)+11
+FROM Emp E, Dept D
+WHERE E.did = D.did AND D.floor = 3 AND E.Sal >= 3501;*/
+SELECT 2*MIN(E.Sal), MAX(E.Sal), 2*MAX(E.Sal)-MIN(E.Sal)+23, AVG(E.Sal)+11
+FROM Emp E, Dept D
+WHERE E.did = D.did AND D.floor = 3 AND E.Sal >= 3501;
+
+/*REZULTAT: 10000, 5000, 5023, 5011*/
+
+/*--------------------------------------------------------------------------------------*/
+/*----------------------II Kolokvijum 2018.---------------------------------------------*/
 /*--------------------------------------------------------------------------------------*/
 
 /*Neka su date sledeće dve tabele: Emp(eid: integer, did: integer, ename: char(20), sal: integer, hobby: 
