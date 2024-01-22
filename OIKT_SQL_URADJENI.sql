@@ -302,43 +302,8 @@ SELECT * FROM Student WHERE email IS NULL;
 
 /*---------------------------II Grupa---------------------------------*/
 
-/*Drugačiji su podaci*/
-
 /*11.*/
 
-CREATE TABLE Emp(
- 	Eid INT PRIMARY KEY,
-  	Did INT,
-  	Ename CHAR(20),
-  	Sal INT,
-  	Hobby CHAR(20)
-);
-
-CREATE TABLE Dept(
- 	Did INT PRIMARY KEY,
-  	Dname CHAR(20),
-  	Floor INT,
-  	Budget REAL
-);
-
-INSERT INTO Emp
-VALUES (1, 10, 'Zoran', 1000, 'Košarka'),
-(2, 20, 'Nikola', 1500, 'Odbojka'),
-(3, 20, 'Filip', 2000, 'Rukomet'),
-(4, 30, 'Stevan', 2500, 'Košarka'),
-(5, 30, 'Goran', 2500, 'Košarka'),
-(6, 40, 'Marko', 2500, 'Fudbal'),
-(7, 50, 'Dragan', 3500, 'Vaterpolo');
-
-INSERT INTO Dept
-VALUES (10, 'Dept1', 1, 50000),
-(20, 'Dept2', 2, 60000),
-(30, 'Dept3', 3, 100000),
-(40, 'Dept4', 4, 80000),
-(50, 'Dept5', 5, 40000);
-
-SELECT * FROM Emp;
-SELECT * FROM Dept;
 /*a) Napisati SQL upit koji izračunava ukupan iznos prodaja za svaki region (tj. za dvogodišnji period 
 prodaje). */
 SELECT Region, SUM(Ukupna_Prodaja) AS [Ukupan Iznos Prodaja Za Svaki Region] FROM Region_Prodaja GROUP BY Region;
