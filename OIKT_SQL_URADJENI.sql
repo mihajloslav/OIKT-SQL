@@ -179,7 +179,10 @@ VALUES (1, 'Zaposleni1', 'Markovic', 50000),
 /*a) Napisati opštu SQL komandu (tako da ne zavisi od trenutnog sadržaja prikazanih tabela) kojom se prikazuje 
 identifikator zaposlenog, ime zaposlenog i iznos plate zaposlenog za sve zaposlene čiji naziv hobija ne 
 počinje slovom “V”. Prikaz sortirati tako da ime zaposlenog bude u rastućem redosledu.*/
-SELECT Eid, Ename, Sal FROM Emp WHERE Ename NOT Like 'V%' ORDER BY Ename ASC;
+SELECT Eid, Ename, Sal FROM Emp WHERE Hobby NOT Like 'V%' ORDER BY Ename ASC;
+
+/*pošto piše da ne zavisi od trenutnog sadržaja prikazanih tabela valjda treba onda ovako(NISAM SIGURAN)*/
+SELECT Id, Ime, Iznos_plate FROM Zaposleni WHERE Hobi NOT LIKE 'V%' ORDER BY Ime ASC
 
 
 /*b) Napisati SQL komandu kojom se prikazuju svi podaci o zaposlenima čija plata nije u opsegu (2500 $, 3500 
